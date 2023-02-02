@@ -1,47 +1,126 @@
 ---
 # Page meta info, like heading, footer text and nav links
 pageInfo:
-  title: Dashy
-  description: Welcome to your new dashboard!
-  navLinks:
-  - title: GitHub
-    path: https://github.com/Lissy93/dashy
-  - title: Documentation
-    path: https://dashy.to/docs
+  title: Dashboard
+  description: 192.168.178.103:8080 | portainer.home:8080
+  # navLinks:
+  # - title: GitHub
+  #   path: https://github.com/Lissy93/dashy
+  # - title: Documentation
+  #   path: https://dashy.to/docs
 
 # Optional app settings and configuration
 appConfig:
-  theme: colorful
+  theme: lissy
+  # dashy-docs, one-dark, lissy
+  customCss: "#dashy{height:100vh;display:flex;flex-flow:column}.home{flex:1 1 auto;padding-bottom:0!important;}.show-btn[data-v-0222a7c0]{display:none}"
+  webSearch:
+    searchEngine: google
+    openingMethod: sametab
 
 # Main content - An array of sections, each containing an array of items
 sections:
-- name: Getting Started
-  icon: fas fa-rocket
-  items:
-  - title: Dashy Live
-    description: Development a project management links for Dashy
-    icon: https://i.ibb.co/qWWpD0v/astro-dab-128.png
-    url: https://live.dashy.to/
-    target: newtab
-  - title: GitHub
-    description: Source Code, Issues and Pull Requests
-    url: https://github.com/lissy93/dashy
-    icon: favicon
-  - title: Docs
-    description: Configuring & Usage Documentation
-    provider: Dashy.to
-    icon: far fa-book
-    url: https://dashy.to/docs
-  - title: Showcase
-    description: See how others are using Dashy
-    url: https://github.com/Lissy93/dashy/blob/master/docs/showcase.md
-    icon: far fa-grin-hearts
-  - title: Config Guide
-    description: See full list of configuration options
-    url: https://github.com/Lissy93/dashy/blob/master/docs/configuring.md
-    icon: fas fa-wrench
-  - title: Support
-    description: Get help with Dashy, raise a bug, or get in contact
-    url: https://github.com/Lissy93/dashy/blob/master/.github/SUPPORT.md
-    icon: far fa-hands-helping
-  
+  - name: Home Network
+    icon: fas fa-network-wired
+    displayData:
+      itemCountX: 2
+
+    items:
+      - title: Proxmox VE
+        icon: hl-proxmox
+        url: https://pve.home:8006/
+        target: sametab
+        statusCheck: true
+        statusCheckUrl: https://192.168.178.100:8006
+        statusCheckAllowInsecure: true
+
+      - title: Pi-Hole
+        icon: hl-pihole-unbound
+        url: http://pi-hole.home/admin
+        target: sametab
+        statusCheck: true
+        statusCheckUrl: http://192.168.178.101/admin
+
+      - title: Wireguard
+        icon: hl-wireguard
+        url: http://wireguard.home:10086/
+        target: sametab
+        statusCheck: true
+        statusCheckUrl: http://192.168.178.102:10086
+
+      - title: Portainer
+        icon: hl-portainer
+        url: http://portainer.home:9000/#!/2/docker/containers
+        target: sametab
+        statusCheck: true
+        statusCheckUrl: http://192.168.178.103:9000
+
+      - title: Jellyfin
+        url: http://jellyfin.home:8096/web/index.html#!/home.html
+        icon: hl-jellyfin
+        target: sametab
+        statusCheck: true
+        statusCheckUrl: http://192.168.178.111:8096
+
+      - title: GitHub
+        url: https://github.com/TychoBrouwer?tab=repositories
+        icon: hl-github
+        target: sametab
+
+  - name: Entertainment
+    icon: fas fa-tv
+    displayData:
+      itemCountX: 2
+
+    items:
+      - title: Youtube
+        icon: hl-youtube-play
+        url: https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg
+        target: sametab
+
+      - title: Netflix
+        icon: favicon
+        url: https://www.netflix.com/browse
+        target: sametab
+
+      - title: Videoland
+        icon: favicon
+        url: https://v2.videoland.com/
+        target: sametab
+
+  - name: School
+    icon: fas fa-graduation-cap
+    displayData:
+      itemCountX: 2
+
+    items:
+      - title: Canvas
+        icon: https://www.instructure.com/sites/default/files/image/2021-12/Canvas_logo_single_mark.png
+        url: https://canvas.tue.nl/
+        target: sametab
+
+      - title: Osiris
+        icon: favicon
+        url: https://tue.osiris-student.nl/#/home
+        target: sametab
+
+      - title: Osiris PlanApp
+        icon: https://www.instructure.com/sites/default/files/image/2021-12/Canvas_logo_single_mark.png
+        url: https://tue.osiris-planapp.nl/#/
+        target: sametab
+
+      - title: My TU/e
+        icon: favicon
+        url: https://go.mydaycloud.com/dashboard/home
+        target: sametab
+
+  - name: Proxmox
+    icon: fas fa-network-wired
+    displayData:
+      rows: 1
+      cols: 2
+
+    widgets:
+      - type: nd-load-history
+        options:
+          host: http://192.168.178.100:19999
