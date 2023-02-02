@@ -14,6 +14,8 @@ RUN \
 # Create and set the working directory
 WORKDIR /app
 
+RUN npx browserslist@latest --update-db
+
 # Install app dependencies
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile --network-timeout 1000000

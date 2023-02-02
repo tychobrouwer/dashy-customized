@@ -11,7 +11,9 @@
         <AuthButtons v-if="userState !== 0" :userType="userState" />
       </div>
       <div :class="`show-hide-container ${settingsVisible ? 'hide-btn' : 'show-btn'}`">
-        <button @click="toggleSettingsVisibility()" v-tooltip="`${settingsVisible ? 'Hide' : 'Open'} Settings Menu`"
+        <button
+          @click="toggleSettingsVisibility()"
+          v-tooltip="`${settingsVisible ? 'Hide' : 'Open'} Settings Menu`"
           tabindex="-2">
           <IconClose v-if="settingsVisible" />
           <IconOpen v-else />
