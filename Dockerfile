@@ -48,6 +48,3 @@ CMD [ "yarn", "start" ]
 
 # Expose the port
 EXPOSE ${PORT}
-
-# Run simple healthchecks every 5 mins, to check that everythings still great
-HEALTHCHECK --interval=5m --timeout=5s --start-period=30s CMD yarn health-check
